@@ -3,26 +3,38 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require('cors')
 
-dotenv.config();
-// const authRoute = require("./routes/authRoutes")
-// const studentRoute = require("./routes/studentRoutes")
-
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+let user = require('./User.json')
+const userModels = require("./models/userModel")
+
+dotenv.config();
+// const authRoute = require("./routes/authRoutes")
+// const userRoute = require("./routes/userDetailsRoutes")
+
+
 
 mongoose.connect(
     process.env.ATLAS_URI,
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
     (err) => {
-        if (err) return console.error(err);
-        console.log('Database connected')
-    }
-)
+        if (err) throw err;
+        if (userModels.collection.countDocuments(function (err, count) {
+            if (!err && count === 0) {
+                userModels.insertMany(user).then(() => {
+                    console.log("Data inserted")
+                }).catch((error) => {
+                    console.log(error)
+                });
+            }
+        }));
+    })
 
-// app.use("/students", studentRoute)
+// app.use("/user", userRoute)
 
-// app.use("/user", authRoute);
+// app.use("/auth", authRoute);
 
 const port = process.env.PORT || 5000;
 
