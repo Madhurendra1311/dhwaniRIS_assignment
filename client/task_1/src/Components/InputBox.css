@@ -1,0 +1,30 @@
+@media only screen and (min-width: 319.99px) {
+    input{
+        width: 35px;
+        height:20px;
+        margin: 5px;
+        text-align: center;
+        font-size:10px;
+        border-radius: 3px;
+    }
+}
+
+@media only screen and (min-width: 767.99px) {
+    input{
+        width: 100px;
+        height:50px;
+        margin: 10px;
+        font-size:20px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 1023.99px) {
+    input{
+        width: 100px;
+    }
+}
+
+input:focus{
+    outline: none;
+}
