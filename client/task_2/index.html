@@ -1,34 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+    <style>
+        #one {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #two {
+            position: absolute;
+            left: 150px;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #three {
+            position: relative;
+            left: 65px;
+            top: 60px;
+            z-index: 2;
+        }
+
+        #four {
+            position: absolute;
+            left: 0px;
+            top: 140px;
+            z-index: 1;
+        }
+
+        #five {
+            position: absolute;
+            left: 150px;
+            top: 140px;
+            z-index: 1;
+        }
+    </style>
 </head>
+
 <body>
-    <div style="text-align: center;">
-        <div style="display: flex; flex-direction: row; position: absolute;">
-            <div style="width: 100px; height: 100px; background-color: aqua; border: 1px solid black; cursor: pointer;">
-                1
-            </div>
-            <div style="width: 100px; height: 100px; background-color: gray; border: 1px solid black; margin-left: 50px; cursor: pointer;">
-                2
-            </div>
-        </div>
-        <div style="width: 100px; height: 100px; background-color: red; border: 1px solid black; position: absolute; top: 100px; left: 85px;">
-            3
-        </div>
-        <div style="display: flex; flex-direction: row; position: absolute; top: 30% ">
-            <div style="width: 100px; height: 100px; background-color: gold; border: 1px solid black; cursor: pointer;">
-                4
-            </div>
-            <div style="width: 100px; height: 100px; background-color: blue; border: 1px solid black; margin-left: 50px; cursor: pointer;">
-                5
-            </div>
-        </div>
+    <div id="one" onclick="myFunction('one')"
+        style="width: 100px; height: 100px; background-color: gray; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
+        1
     </div>
-    <script src="script.js"></script>
+
+    <div id="two" onclick="myFunction('two')"
+        style="width: 100px; height: 100px; background-color: yellow; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
+        2</div>
+
+    <div id="three"
+        style="width: 100px; height: 100px; background-color: red; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">5
+    </div>
+
+    <div id="four" onclick="myFunction('four')"
+        style="width: 100px; height: 100px; background-color: blue; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
+        3</div>
+
+    <div id="five" onclick="myFunction('five')"
+        style="width: 100px; height: 100px; background-color: gray; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
+        4</div>
+
+    <script>
+        const defaultZindex = 1
+        const changedZindex = 3
+        function myFunction(id) {           
+            var element = document.querySelector('#'+id)
+            var styles = getComputedStyle(element)
+            if(styles.zIndex == defaultZindex){
+                document.getElementById(id).style.zIndex = changedZindex;
+            }
+            else{
+                document.getElementById(id).style.zIndex = defaultZindex;
+            }
+        }
+    </script>
 </body>
+
 </html>
