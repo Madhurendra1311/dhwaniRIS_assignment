@@ -13,7 +13,7 @@ const childProfile = new Schema({
     dob: {
         type: String,
         required: true,
-        trim: true, 
+        trim: true,
     },
     father_name: {
         type: String,
@@ -24,8 +24,8 @@ const childProfile = new Schema({
         required: true
     },
     district_id: {
-        type: String, 
-        required: true       
+        type: String,
+        required: true
     },
     photo: {
         type: String,
