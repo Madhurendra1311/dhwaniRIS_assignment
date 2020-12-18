@@ -1,10 +1,7 @@
 [
     {
-        "name": "Bhagyesh Coordinator",
         "username": 1412,
-        "mobile": 8488074612,
-        "email": "bhagyesh@dhwaniris.com",
         "password": "142487",
-        "token":""
+        "token":null
     }
 ]

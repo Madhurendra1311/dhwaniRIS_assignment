@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 	top: 5vw;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0,0.2);
 	padding: 25px 25px 100px 25px;
-	background-color:#455A64;
+	background-color:#00bfa5;
 	border-radius:5px;
 	> h2{
 		// margin-left:19vh;
@@ -36,14 +36,14 @@ export default function App() {
   const [showValue, setShowValue] = React.useState('')
 
   React.useEffect(() => {
-    let tempStr = ''
+    let str = ''
     for(let i = 0; i < value.length; i++){
       if(i % 4 === 0){
-        tempStr += ' '
+        str += ' '
       }
-      tempStr += value[i]
+      str += value[i]
     }
-    setShowValue(tempStr.slice(1,tempStr.length))
+    setShowValue(str.slice(1,str.length))
   }, [value])
 
   const handleValue = (value) => {

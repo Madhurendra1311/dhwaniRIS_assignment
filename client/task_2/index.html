@@ -1,44 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        #one {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            z-index: 1;
-        }
-
-        #two {
-            position: absolute;
-            left: 150px;
-            top: 0px;
-            z-index: 1;
-        }
-
-        #three {
-            position: relative;
-            left: 65px;
-            top: 60px;
-            z-index: 2;
-        }
-
-        #four {
-            position: absolute;
-            left: 0px;
-            top: 140px;
-            z-index: 1;
-        }
-
-        #five {
-            position: absolute;
-            left: 150px;
-            top: 140px;
-            z-index: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div id="one" onclick="myFunction('one')"
         style="width: 100px; height: 100px; background-color: gray; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
@@ -60,21 +24,7 @@
     <div id="five" onclick="myFunction('five')"
         style="width: 100px; height: 100px; background-color: gray; border: 1px solid rgb(0, 0, 0); margin-left: 50px;">
         4</div>
-
-    <script>
-        const defaultZindex = 1
-        const changedZindex = 3
-        function myFunction(id) {           
-            var element = document.querySelector('#'+id)
-            var styles = getComputedStyle(element)
-            if(styles.zIndex == defaultZindex){
-                document.getElementById(id).style.zIndex = changedZindex;
-            }
-            else{
-                document.getElementById(id).style.zIndex = defaultZindex;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
