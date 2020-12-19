@@ -7,7 +7,6 @@ export default class InputBox extends React.Component {
         super(props)
         this.value = new Array(this.props.boxes).fill("")
         this.elements = []
-        this.status = false
     }
 
     componentDidMount() {
