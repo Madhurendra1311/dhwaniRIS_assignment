@@ -20,8 +20,6 @@ router.post("/createDistrict", async(req, res) => {
     const user = await User.findOne({ username: decoded.username })
 
     if (user) {
-        const isStateExist = await State.findOne({ stateName: stateName })
-        if(!isStateExist){
             State.update({ _id: stateId }, {
                 $push: {
                     district:{
@@ -34,20 +32,7 @@ router.post("/createDistrict", async(req, res) => {
                 status: 200,
                 message: "Operation performed successfully"
             }))
-            .catch(err => res.status(400).json('Error: ' + err.message))
-        }
-        else{
-            res.json({
-                success: false,
-                status: 200,
-                message: "Got error while saving",
-                ERROR: {
-                    districtName: [
-                        "This District is already exist"
-                    ]
-                }
-            })
-        }   
+            .catch(err => res.status(400).json('Error: ' + err.message))  
     }
     else {
         res.json({
@@ -56,18 +41,6 @@ router.post("/createDistrict", async(req, res) => {
             message: "Authentication Failed"
         });
     }
-
-    // State.update({ _id: stateId }, {
-    //     $push: {
-    //         district:{
-    //             districtName: districtName
-    //         }
-    //     }
-    // })
-    // .then((resp) => {
-    //     res.status(200).json({ message: "Order Placed" })
-    // })
-    // .catch((err) => res.status(400).json("Error: " + err));
 })
 
 router.get('/getDistrict', async(req, res) => {
@@ -82,13 +55,13 @@ router.get('/getDistrict', async(req, res) => {
     var decoded = jwt.verify(token, 'SECRETKEY');
     const user = await User.findOne({ username: decoded.username })
     if (user) {
-        const stateId = req.headers.stateId
-        State.find({ _id:stateId })
+        const stateId = req.body.stateId
+        const dist = await State.findOne({ _id:stateId })
         res.json({
             success: true,
             status: 200,
             message: "District Details",
-            district: district,
+            district: dist.district,
             timestamp: Date.now()
         });
     }
@@ -99,13 +72,5 @@ router.get('/getDistrict', async(req, res) => {
             message: "Authentication Failed"
         });
     }
-
-
-    // const stateId = req.headers.stateId
-    // State.find({ _id:stateId })
-    //     .then((dist) => {
-    //         res.status(200).json(dist.district)
-    //     })
-    //     .catch((err) => res.status(400).json("Error: " + err));
 })
 module.exports = router;
